@@ -7,4 +7,6 @@ import com.runva.api.models.entity.Evento;
 public interface IEventoService {
 
 	public List<Evento> getAll();
+	
+	public Evento getEventById(Integer id);
 }

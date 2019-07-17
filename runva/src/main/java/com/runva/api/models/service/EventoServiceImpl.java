@@ -23,5 +23,10 @@ public class EventoServiceImpl implements IEventoService{
 		return eventoDao.getAll();
 	}
 
+	@Override
+	public Evento getEventById(Integer id) {
+		return eventoDao.getEventById(id);
+	}
+
 	
 }
