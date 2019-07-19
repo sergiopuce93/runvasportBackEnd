@@ -9,4 +9,8 @@ public interface IEventoService {
 	public List<Evento> getAll();
 	
 	public Evento getEventById(Integer id);
+	
+	public Evento newEvent(Evento event);
+	
+	public Evento delete(Integer id);
 }
