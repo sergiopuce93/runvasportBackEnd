@@ -13,75 +13,100 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
+/**
+ * Event entity of runvasport's data base
+ * 
+ * @author Sergio
+ *
+ */
 @Entity
-@Table(name="eventos")
+@Table(name = "eventos")
 public class Evento {
 
 	@Id
-	@Column(name="IDEvento")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "IDEvento")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="Nombre")
+
+	@NotNull(message = "El campo nombre es obligatorio")
+	@Size(min = 2, message = "El campo nombre debe tener minimo 2 caracteres")
+	@Column(name = "Nombre")
 	private String name;
-	
-	@Column(name="Url")
+
+	@Column(name = "Url")
 	private String url;
-	
-	@NotNull(message="El nombre del producto es obligatorio")
-	@Size(min=4, max=12, message="el tamaño tiene que estar entre 4 y 12")
-	@Column(name="DeportePrincipal")
+
+	@NotNull(message = "El campo deporte es obligatorio")
+	@Size(min = 4, max = 12, message = "El campo deporte debe tener entre 4 y 12 caracteres")
+	@Column(name = "DeportePrincipal")
 	private String sport;
-	
-	@Column(name="ParticipantesEstimados")
+
+	@Column(name = "ParticipantesEstimados")
 	private Integer estimatedParticipants;
-	
-	@Column(name="LimiteParticipantes")
+
+	@Column(name = "LimiteParticipantes")
 	private Integer limitedParticipants;
-	
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="FechaInicio")
+	@Column(name = "FechaInicio")
 	private Date dateIni;
-	
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="FechaFin")
+	@Column(name = "FechaFin")
 	private Date dateEnd;
-	
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="FechaInicioInscrip")
+	@Column(name = "FechaInicioInscrip")
 	private Date dateIniInscription;
-	
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="FechaFinInscrip")
+	@Column(name = "FechaFinInscrip")
 	private Date dateEndInscription;
 
-	@Column(name="Lugar")
+	@Column(name = "Lugar")
 	private String place;
-	
-	@Column(name="Direccion")
+
+	@Column(name = "Direccion")
 	private String address;
-	
-	@Column(name="Pais")
+
+	@Column(name = "Pais")
 	private String country;
-	
-	@Column(name="Poblacion")
+
+	@Column(name = "Poblacion")
 	private String population;
-	
-	@Column(name="CP")
+
+	@Column(name = "CP")
 	private Integer postalCode;
-	
-	@Column(name="EMail")
+
+	@Column(name = "EMail")
 	private String email;
-	
-	@Column(name="EstiloVisual")
+
+	@Column(name = "EstiloVisual")
 	private String visualStyle;
-	
-	@Column(name="LimiteInscritos")
+
+	@Column(name = "LimiteInscritos")
 	private String limitedInscri;
-	
-	
-	
+
+	public Evento() {
+		// Empty constructor
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getUrl() {
 		return url;
 	}
@@ -210,20 +235,4 @@ public class Evento {
 		this.limitedInscri = limitedInscri;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
 }
