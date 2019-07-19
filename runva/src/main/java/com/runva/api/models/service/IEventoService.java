@@ -31,7 +31,7 @@ public interface IEventoService {
 	 * Create new event
 	 * 
 	 * @param event
-	 * @return event
+	 * @return new event
 	 */
 	public Evento newEvent(Evento event);
 
@@ -39,7 +39,15 @@ public interface IEventoService {
 	 * Delete event by id
 	 * 
 	 * @param id
-	 * @return
+	 * @return event deleted
 	 */
 	public Evento delete(Integer id);
+	
+	/**
+	 * Update event
+	 * 
+	 * @param event
+	 * @return updated event
+	 */
+	public Evento update(Evento event);
 }

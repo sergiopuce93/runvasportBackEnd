@@ -86,4 +86,11 @@ public class EventoDaoImpl implements IEventoDao {
 		em.remove(getEventById(id));
 	}
 
+	@Override
+	public Evento update(Evento event) {
+		
+		return null;
+	}
+	
+
 }

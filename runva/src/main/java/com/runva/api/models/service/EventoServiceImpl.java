@@ -72,6 +72,14 @@ public class EventoServiceImpl implements IEventoService{
 		eventoDao.delete(id);
 		return eventoDao.getEventById(id);
 	}
+
+	@Override
+	public Evento update(Evento event) {
+		
+		return null;
+	}
+	
+	
 	
 
 	

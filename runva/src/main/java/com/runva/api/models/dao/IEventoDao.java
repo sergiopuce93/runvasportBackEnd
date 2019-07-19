@@ -42,4 +42,12 @@ public interface IEventoDao {
 	 * @param id
 	 */
 	void delete(Integer id);
+	
+	/**
+	 * Update event
+	 * 
+	 * @param event
+	 * @return event update
+	 */
+	Evento update(Evento event);
 }
