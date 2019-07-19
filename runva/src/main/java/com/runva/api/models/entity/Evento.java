@@ -91,6 +91,9 @@ public class Evento {
 		// Empty constructor
 	}
 
+	/*
+	 * Getters and setters
+	 */
 	public Integer getId() {
 		return id;
 	}
