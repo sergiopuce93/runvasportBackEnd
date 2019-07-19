@@ -2,6 +2,7 @@ package com.runva.api.models.dao;
 
 import java.util.List;
 
+
 import com.runva.api.models.entity.Evento;
 
 public interface IEventoDao {
@@ -17,4 +18,12 @@ public interface IEventoDao {
 	 * @param id's event
 	 */
 	Evento getEventById(Integer id);
+	
+	/*
+	 * 
+	 * Post event
+	 * 
+	 * @param Evento object
+	 */
+	Evento newEvent(Evento event);
 }
