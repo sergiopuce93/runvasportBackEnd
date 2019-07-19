@@ -43,7 +43,7 @@ public class EventoController {
 	private IEventoService eventoService;
 
 	/* 
-	 * Messages
+	 * Response default messages
 	 */
 	private static final String EVENTDOESNTEXIST = "EVENT DOESN'T EXIST";
 	private static final String BADREQUEST = "BAD REQUEST";
@@ -97,7 +97,7 @@ public class EventoController {
 		if (result.hasErrors()) {
 
 			List<String> errors = result.getFieldErrors().stream()
-					.map(err -> "El campo " + err.getField() + " " + err.getDefaultMessage())
+					.map(err -> err.getDefaultMessage())
 					.collect(Collectors.toList());
 
 			response.put("errors", errors);

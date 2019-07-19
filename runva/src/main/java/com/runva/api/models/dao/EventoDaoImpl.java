@@ -10,15 +10,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.runva.api.models.entity.Evento;
 
+/**
+ * Implementation of eventoDao interface
+ * 
+ * Manage session and queries executions for runvasport data base
+ * 
+ * @author Sergio
+ *
+ */
 @Repository
 public class EventoDaoImpl implements IEventoDao {
 
 	@PersistenceContext
 	private EntityManager em;
-	
 
 	/*
-	 * (non-Javadoc) Get all events
+	 * (non-Javadoc)
 	 * 
 	 * @see com.runva.api.models.dao.IEventoDao#getAll()
 	 */
@@ -48,20 +55,22 @@ public class EventoDaoImpl implements IEventoDao {
 			return new Evento();
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.runva.api.models.dao.IEventoDao#newEvent(com.runva.api.models.entity.Evento)
+	 * @see
+	 * com.runva.api.models.dao.IEventoDao#newEvent(com.runva.api.models.entity.
+	 * Evento)
 	 */
 	@Transactional
 	@Override
 	public Evento newEvent(Evento event) {
-		
 		em.persist(event);
+
 		return event;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -71,10 +80,16 @@ public class EventoDaoImpl implements IEventoDao {
 	@Override
 	public void delete(Integer id) {
 		Evento event = getEventById(id);
-		if(event.getId() == null) {
-			
+		if (event.getId() == null) {
+			event = null;
 		}
 		em.remove(getEventById(id));
+	}
+
+	@Override
+	public Evento update(Evento event) {
+		
+		return null;
 	}
 	
 
