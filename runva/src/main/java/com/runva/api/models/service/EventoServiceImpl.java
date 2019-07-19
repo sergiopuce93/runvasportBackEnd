@@ -25,8 +25,29 @@ public class EventoServiceImpl implements IEventoService{
 
 	@Override
 	public Evento getEventById(Integer id) {
+		
 		return eventoDao.getEventById(id);
 	}
+
+	@Override
+	public Evento newEvent(Evento event) {
+		
+		return eventoDao.newEvent(event);
+	}
+
+	@Override
+	public Evento delete(Integer id) {
+		
+		Evento eventExist = eventoDao.getEventById(id);
+		
+		if(eventExist.getId() == null) {
+			return null;
+		}
+		
+		eventoDao.delete(id);
+		return eventoDao.getEventById(id);
+	}
+	
 
 	
 }

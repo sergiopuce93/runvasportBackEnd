@@ -26,4 +26,7 @@ public interface IEventoDao {
 	 * @param Evento object
 	 */
 	Evento newEvent(Evento event);
+	
+	
+	void delete(Integer id);
 }

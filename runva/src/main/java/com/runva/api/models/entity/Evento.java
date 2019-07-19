@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="eventos")
@@ -26,6 +29,8 @@ public class Evento {
 	@Column(name="Url")
 	private String url;
 	
+	@NotNull(message="El nombre del producto es obligatorio")
+	@Size(min=4, max=12, message="el tamaño tiene que estar entre 4 y 12")
 	@Column(name="DeportePrincipal")
 	private String sport;
 	

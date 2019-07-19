@@ -5,8 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,9 +26,8 @@ public class EventoDaoImpl implements IEventoDao {
 	@Transactional
 	@Override
 	public List<Evento> getAll() {
-		
-//		sessionFactory.getCurrentSession().createQuery("from Evento").getResultList();
-		return null;
+		List<Evento> eventos = em.createQuery("from Evento").getResultList();
+		return eventos;
 	}
 
 	/*
@@ -42,7 +39,7 @@ public class EventoDaoImpl implements IEventoDao {
 	@Transactional
 	@Override
 	public Evento getEventById(Integer id) {
-<<<<<<< Updated upstream
+
 		List<Evento> eventos = em.createQuery("from Evento e where e.id =:id").setParameter("id", id).getResultList();
 
 		if (!eventos.isEmpty()) {
@@ -52,13 +49,33 @@ public class EventoDaoImpl implements IEventoDao {
 		}
 	}
 	
-	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.runva.api.models.dao.IEventoDao#newEvent(com.runva.api.models.entity.Evento)
+	 */
 	@Transactional
 	@Override
 	public Evento newEvent(Evento event) {
 		
-		
+		em.persist(event);
 		return event;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.runva.api.models.dao.IEventoDao#delete(java.lang.Integer)
+	 */
+	@Transactional
+	@Override
+	public void delete(Integer id) {
+		Evento event = getEventById(id);
+		if(event.getId() == null) {
+			
+		}
+		em.remove(getEventById(id));
+	}
+	
 
 }
