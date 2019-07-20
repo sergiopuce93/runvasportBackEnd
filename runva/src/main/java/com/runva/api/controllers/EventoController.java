@@ -43,7 +43,7 @@ public class EventoController {
 	private IEventoService eventoService;
 
 	/* 
-	 * Response default messages
+	 * Messages
 	 */
 	private static final String EVENTDOESNTEXIST = "EVENT DOESN'T EXIST";
 	private static final String BADREQUEST = "BAD REQUEST";
