@@ -21,23 +21,23 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "eventos")
-public class Evento {
+public class Event {
 
 	@Id
 	@Column(name = "IDEvento")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull(message = "El campo nombre es obligatorio")
-	@Size(min = 2, message = "El campo nombre debe tener minimo 2 caracteres")
+	@NotNull(message = "obligatory")
+	@Size(min = 2, message = "must have a minimum of 2 characters")
 	@Column(name = "Nombre")
 	private String name;
 
 	@Column(name = "Url")
 	private String url;
 
-	@NotNull(message = "El campo deporte es obligatorio")
-	@Size(min = 4, max = 12, message = "El campo deporte debe tener entre 4 y 12 caracteres")
+	@NotNull(message = "obligatory")
+	@Size(min = 4, max = 12, message = "must have between 4 and 12 characters")
 	@Column(name = "DeportePrincipal")
 	private String sport;
 
@@ -87,7 +87,7 @@ public class Evento {
 	@Column(name = "LimiteInscritos")
 	private String limitedInscri;
 
-	public Evento() {
+	public Event() {
 		// Empty constructor
 	}
 

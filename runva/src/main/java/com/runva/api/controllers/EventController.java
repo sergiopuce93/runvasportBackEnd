@@ -17,12 +17,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.runva.api.models.entity.Evento;
-import com.runva.api.models.service.IEventoService;
+import com.runva.api.models.entity.Event;
+import com.runva.api.models.service.IEventService;
 
 /**
  * Controller class Event class
@@ -33,17 +34,17 @@ import com.runva.api.models.service.IEventoService;
  */
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
-@RequestMapping("/api/eventos")
-public class EventoController {
+@RequestMapping("/api/events")
+public class EventController {
 
 	/**
 	 * Event service
 	 */
 	@Autowired
-	private IEventoService eventoService;
+	private IEventService eventService;
 
-	/* 
-	 * Messages
+	/*
+	 * Response default messages
 	 */
 	private static final String EVENTDOESNTEXIST = "EVENT DOESN'T EXIST";
 	private static final String BADREQUEST = "BAD REQUEST";
@@ -54,8 +55,8 @@ public class EventoController {
 	 * Get all events
 	 */
 	@GetMapping("/")
-	public ResponseEntity<List<Evento>> getEvents() {
-		return ResponseEntity.ok().body(eventoService.getAll());
+	public ResponseEntity<List<Event>> getEvents() {
+		return ResponseEntity.ok().body(eventService.getAll());
 	}
 
 	/**
@@ -66,22 +67,22 @@ public class EventoController {
 	 */
 	@GetMapping("/{idEvent}")
 	public ResponseEntity<?> getEventById(@PathVariable("idEvent") Integer idEvent) {
-		Evento evento = null;
+		Event event = null;
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			evento = eventoService.getEventById(idEvent);
+			event = eventService.getEventById(idEvent);
 		} catch (DataAccessException e) {
-			response.put("mensaje", BADREQUEST);
+			response.put("error", BADREQUEST);
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		if (evento.getId() == null) {
-			response.put("mensaje", EVENTDOESNTEXIST);
+		if (event.getId() == null) {
+			response.put("error", EVENTDOESNTEXIST);
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 
-		return new ResponseEntity<Evento>(evento, HttpStatus.OK);
+		return new ResponseEntity<Event>(event, HttpStatus.OK);
 	}
 
 	/**
@@ -90,14 +91,12 @@ public class EventoController {
 	 * @param new event
 	 */
 	@PostMapping("/")
-	public ResponseEntity<?> newEvent(@Valid @RequestBody Evento event, BindingResult result) {
-		Evento eventoNew = null;
+	public ResponseEntity<?> newEvent(@Valid @RequestBody Event event, BindingResult result) {
+		Event eventoNew = null;
 		Map<String, Object> response = new HashMap<>();
 
 		if (result.hasErrors()) {
-
-			List<String> errors = result.getFieldErrors().stream()
-					.map(err -> err.getDefaultMessage())
+			List<String> errors = result.getFieldErrors().stream().map(err -> err.getDefaultMessage())
 					.collect(Collectors.toList());
 
 			response.put("errors", errors);
@@ -105,13 +104,13 @@ public class EventoController {
 		}
 
 		try {
-			eventoNew = eventoService.newEvent(event);
+			eventoNew = eventService.newEvent(event);
 		} catch (DataAccessException e) {
-			response.put("mensaje", BADREQUEST);
+			response.put("error", BADREQUEST);
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		response.put("message", EVENTCREATE);
+		response.put("error", EVENTCREATE);
 		response.put("evento", eventoNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
@@ -124,23 +123,32 @@ public class EventoController {
 	 */
 	@DeleteMapping("/{idEvent}")
 	public ResponseEntity<?> delete(@PathVariable Integer idEvent) {
-		Evento evento = null;
+		Event event = null;
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			evento = eventoService.getEventById(idEvent);
+			event = eventService.getEventById(idEvent);
 		} catch (DataAccessException e) {
-			response.put("message", BADREQUEST);
+			response.put("error", BADREQUEST);
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		if (evento.getId() == null) {
-			response.put("message", EVENTDOESNTEXIST);
+		if (event.getId() == null) {
+			response.put("error", EVENTDOESNTEXIST);
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 
-		eventoService.delete(idEvent);
-		response.put("message", EVENTDELETE);
+		eventService.delete(idEvent);
+		response.put("error", EVENTDELETE);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+	}
+
+	/**
+	 * Update event
+	 */
+	@PutMapping("/")
+	public ResponseEntity<?> update(Event event) {
+
+		return null;
 	}
 }
