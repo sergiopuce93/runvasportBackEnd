@@ -2,23 +2,24 @@ package com.runva.api.models.dao;
 
 import java.util.List;
 
-import com.runva.api.models.entity.Evento;
+import com.runva.api.models.entity.Event;
 
 /**
  * Data access object for evento model
  * 
  * Manage all connections to runvasport data base about events
+ * 
  * @author Sergio
  *
  */
-public interface IEventoDao {
+public interface IEventDao {
 
 	/**
 	 * Get all events
 	 * 
 	 * @return event's list
 	 */
-	List<Evento> getAll();
+	List<Event> getAll();
 
 	/**
 	 * Get event by id
@@ -26,7 +27,7 @@ public interface IEventoDao {
 	 * @param id
 	 * @return event
 	 */
-	Evento getEventById(Integer id);
+	Event getEventById(Integer id);
 
 	/**
 	 * Create new event
@@ -34,7 +35,7 @@ public interface IEventoDao {
 	 * @param event
 	 * @return event
 	 */
-	Evento newEvent(Evento event);
+	Event newEvent(Event event);
 
 	/**
 	 * Delete event by id

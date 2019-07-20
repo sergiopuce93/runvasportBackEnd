@@ -2,7 +2,7 @@ package com.runva.api.models.service;
 
 import java.util.List;
 
-import com.runva.api.models.entity.Evento;
+import com.runva.api.models.entity.Event;
 
 /**
  * Service class for eventoDao class
@@ -10,14 +10,14 @@ import com.runva.api.models.entity.Evento;
  * @author Sergio
  *
  */
-public interface IEventoService {
+public interface IEventService {
 
 	/**
 	 * Get event's list
 	 * 
 	 * @return event's list
 	 */
-	public List<Evento> getAll();
+	public List<Event> getAll();
 
 	/**
 	 * Get event by id
@@ -25,7 +25,7 @@ public interface IEventoService {
 	 * @param id
 	 * @return event
 	 */
-	public Evento getEventById(Integer id);
+	public Event getEventById(Integer id);
 
 	/**
 	 * Create new event
@@ -33,7 +33,7 @@ public interface IEventoService {
 	 * @param event
 	 * @return event
 	 */
-	public Evento newEvent(Evento event);
+	public Event newEvent(Event event);
 
 	/**
 	 * Delete event by id
@@ -41,5 +41,5 @@ public interface IEventoService {
 	 * @param id
 	 * @return
 	 */
-	public Evento delete(Integer id);
+	public Event delete(Integer id);
 }
