@@ -26,6 +26,7 @@ public class InscriptionDaoImpl implements IInscriptionDao {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.runva.api.models.dao.IInscriptionDao#getAll()
 	 */
 	@SuppressWarnings("unchecked")
@@ -38,7 +39,9 @@ public class InscriptionDaoImpl implements IInscriptionDao {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.runva.api.models.dao.IInscriptionDao#getInscriptionById(java.lang.Integer)
+	 * 
+	 * @see com.runva.api.models.dao.IInscriptionDao#getInscriptionById(java.lang.
+	 * Integer)
 	 */
 	@SuppressWarnings("unchecked")
 	@Transactional
@@ -57,7 +60,10 @@ public class InscriptionDaoImpl implements IInscriptionDao {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.runva.api.models.dao.IInscriptionDao#newInscription(com.runva.api.models.entity.Inscription)
+	 * 
+	 * @see
+	 * com.runva.api.models.dao.IInscriptionDao#newInscription(com.runva.api.models.
+	 * entity.Inscription)
 	 */
 	@Transactional
 	@Override
@@ -69,6 +75,7 @@ public class InscriptionDaoImpl implements IInscriptionDao {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.runva.api.models.dao.IInscriptionDao#delete(java.lang.Integer)
 	 */
 	@Transactional
