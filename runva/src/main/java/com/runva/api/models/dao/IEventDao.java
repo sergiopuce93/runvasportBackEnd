@@ -43,4 +43,11 @@ public interface IEventDao {
 	 * @param id
 	 */
 	void delete(Integer id);
+	
+	/**
+	 * Update event
+	 * 
+	 * @param event
+	 */
+	void update(Event newEvent, Event originalEvent);
 }

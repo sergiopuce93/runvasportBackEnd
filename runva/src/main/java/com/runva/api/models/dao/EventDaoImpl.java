@@ -66,7 +66,7 @@ public class EventDaoImpl implements IEventDao {
 	@Override
 	public Event newEvent(Event event) {
 		em.persist(event);
-
+		
 		return event;
 	}
 
@@ -83,6 +83,17 @@ public class EventDaoImpl implements IEventDao {
 			event = null;
 		}
 		em.remove(getEventById(id));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runva.api.models.dao.IEventDao#update(com.runva.api.models.entity.Event, com.runva.api.models.entity.Event)
+	 */
+	@Override
+	public void update(Event newEvent, Event originalEvent) {
+		originalEvent.join(newEvent);
+		
+		em.merge(originalEvent);
 	}
 
 }

@@ -80,4 +80,17 @@ public class EventServiceImpl implements IEventService {
 		return eventDao.getEventById(id);
 	}
 
+	@Override
+	public Event update(Event event) {
+		
+		Event eventExist = eventDao.getEventById(event.getId());
+		
+		if(eventExist.getId() == null) {
+			return null;
+		}
+		
+		eventDao.update(event, eventExist);
+		return eventDao.getEventById(event.getId());
+	}
+
 }
