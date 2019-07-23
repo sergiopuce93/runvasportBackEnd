@@ -50,6 +50,7 @@ public class EventController {
 	private static final String BADREQUEST = "BAD REQUEST";
 	private static final String EVENTDELETE = "EVENT DELETE";
 	private static final String EVENTCREATE = "EVENT CREATED";
+	private static final String EVENTNOTVALID = "EVENT FORMAT NOT VALID";
 
 	/**
 	 * Get all events
@@ -96,7 +97,7 @@ public class EventController {
 		Map<String, Object> response = new HashMap<>();
 
 		if (result.hasErrors()) {
-			List<String> errors = result.getFieldErrors().stream().map(err -> err.getDefaultMessage())
+			List<String> errors = result.getFieldErrors().stream().map(err -> "The field "+ err.getField() + " " + err.getDefaultMessage())
 					.collect(Collectors.toList());
 
 			response.put("errors", errors);
@@ -147,8 +148,37 @@ public class EventController {
 	 * Update event
 	 */
 	@PutMapping("/")
-	public ResponseEntity<?> update(Event event) {
+	public ResponseEntity<?> update(@Valid @RequestBody Event event, BindingResult result) {
 
-		return null;
+		Map<String, Object> response = new HashMap<>();
+		
+		if (result.hasErrors()) {
+			List<String> errors = result.getFieldErrors().stream().map(err -> "The field "+ err.getField() + " " + err.getDefaultMessage())
+					.collect(Collectors.toList());
+
+			response.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+		}
+
+		if (!isValid(event)) {
+			response.put("error", EVENTNOTVALID);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+		}
+		Event updatedEvent = eventService.update(event);
+
+		return ResponseEntity.ok().body(updatedEvent);
+	}
+
+	/**
+	 * Valid event
+	 * 
+	 * @param event
+	 * @return
+	 */
+	private boolean isValid(Event event) {
+		if (event == null || event.getName() == null || "".equals(event.getName())) {
+			return false;
+		}
+		return true;
 	}
 }

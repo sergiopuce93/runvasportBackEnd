@@ -42,4 +42,12 @@ public interface IEventService {
 	 * @return
 	 */
 	public Event delete(Integer id);
+	
+	/**
+	 * Update event
+	 * 
+	 * @param event
+	 * @return
+	 */
+	public Event update(Event event);
 }

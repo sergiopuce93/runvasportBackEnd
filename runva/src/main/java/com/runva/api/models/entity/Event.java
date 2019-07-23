@@ -35,6 +35,9 @@ public class Event {
 
 	@Column(name = "Url")
 	private String url;
+	
+	@Column(name = "Imagen")
+	private String imagen;
 
 	@NotNull(message = "obligatory")
 	@Size(min = 4, max = 12, message = "must have between 4 and 12 characters")
@@ -94,8 +97,17 @@ public class Event {
 	/*
 	 * Getters and setters
 	 */
+	
 	public Integer getId() {
 		return id;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public void setId(Integer id) {
@@ -236,6 +248,34 @@ public class Event {
 
 	public void setLimitedInscri(String limitedInscri) {
 		this.limitedInscri = limitedInscri;
+	}
+	
+	/**
+	 * Merge not null values to event
+	 * 
+	 * @param newEvent
+	 */
+	public void join(Event newEvent) {
+		
+		this.address = (newEvent.getAddress() == null) ? this.address : newEvent.getAddress();
+		this.country = (newEvent.getCountry() == null) ? this.country : newEvent.getCountry();
+		this.dateEnd = (newEvent.getDateEnd() == null) ? this.dateEnd : newEvent.getDateEnd();
+		this.dateEndInscription = (newEvent.getDateEndInscription() == null) ? this.dateEndInscription : newEvent.getDateEndInscription();
+		this.dateIni = (newEvent.getDateIni() == null) ? this.dateIni : newEvent.getDateIni();
+		this.dateIniInscription = (newEvent.getDateIniInscription() == null) ? this.dateIniInscription : newEvent.getDateIniInscription();
+		this.email = (newEvent.getEmail() == null) ? this.email : newEvent.getEmail();
+		this.estimatedParticipants = (newEvent.getEstimatedParticipants() == null) ? this.estimatedParticipants : newEvent.getEstimatedParticipants();
+		this.imagen = (newEvent.getImagen() == null) ? this.imagen : newEvent.getImagen();
+		this.limitedInscri = (newEvent.getLimitedInscri() == null) ? this.limitedInscri : newEvent.getLimitedInscri();
+		this.limitedParticipants = (newEvent.getLimitedParticipants() == null) ? this.limitedParticipants : newEvent.getLimitedParticipants();
+		this.name = (newEvent.getName() == null) ? this.name : newEvent.getName();
+		this.place = (newEvent.getPlace() == null) ? this.place : newEvent.getPlace();
+		this.population = (newEvent.getPopulation() == null) ? this.population : newEvent.getPopulation();
+		this.postalCode = (newEvent.getPostalCode() == null) ? this.postalCode : newEvent.getPostalCode();
+		this.sport = (newEvent.getSport() == null) ? this.sport : newEvent.getSport();
+		this.url = (newEvent.getUrl() == null) ? this.url : newEvent.getUrl();
+		this.visualStyle = (newEvent.getVisualStyle() == null) ? this.visualStyle : newEvent.getVisualStyle();
+		
 	}
 
 }
