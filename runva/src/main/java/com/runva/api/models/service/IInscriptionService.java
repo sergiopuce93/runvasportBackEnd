@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.runva.api.models.entity.Inscription;
 
+
 /**
  * Service class for inscriptionoDao class
  * 
@@ -42,4 +43,12 @@ public interface IInscriptionService {
 	 * @return
 	 */
 	public Inscription delete(Integer id);
+	
+	/**
+	 * Update inscription
+	 * 
+	 * @param inscription
+	 * @return
+	 */
+	public Inscription update(Inscription inscription);
 }

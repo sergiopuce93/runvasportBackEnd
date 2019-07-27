@@ -9,8 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.runva.api.models.dao.IInscriptionDao;
 import com.runva.api.models.entity.Inscription;
 
+
 /**
- * Implementation of Service for eventoDao
+ * Implementation of Service for inscriptionDao
  * 
  * @author Sergio
  *
@@ -23,7 +24,7 @@ public class InscriptionServiceImpl implements IInscriptionService{
 	 * Inscription data access object
 	 */
 	@Autowired
-	private IInscriptionDao eventoDao;
+	private IInscriptionDao inscriptionDao;
 	
 	/*
 	 * (non-Javadoc)
@@ -33,7 +34,7 @@ public class InscriptionServiceImpl implements IInscriptionService{
 	@Transactional(readOnly = true)
 	public List<Inscription> getAll() {
 		
-		return eventoDao.getAll();
+		return inscriptionDao.getAll();
 	}
 
 	/*
@@ -43,7 +44,7 @@ public class InscriptionServiceImpl implements IInscriptionService{
 	@Override
 	public Inscription getInscriptionById(Integer id) {
 		
-		return eventoDao.getInscriptionById(id);
+		return inscriptionDao.getInscriptionById(id);
 	}
 
 	/*
@@ -53,7 +54,7 @@ public class InscriptionServiceImpl implements IInscriptionService{
 	@Override
 	public Inscription newInscription(Inscription inscrption) {
 		
-		return eventoDao.newInscription(inscrption);
+		return inscriptionDao.newInscription(inscrption);
 	}
 
 	/*
@@ -63,15 +64,32 @@ public class InscriptionServiceImpl implements IInscriptionService{
 	@Override
 	public Inscription delete(Integer id) {
 		
-		Inscription eventExist = eventoDao.getInscriptionById(id);
+		Inscription inscriptionExist = inscriptionDao.getInscriptionById(id);
 		
-		if(eventExist.getId() == null) {
+		if(inscriptionExist.getId() == null) {
 			return null;
 		}
 		
-		eventoDao.delete(id);
-		return eventoDao.getInscriptionById(id);
+		inscriptionDao.delete(id);
+		return inscriptionDao.getInscriptionById(id);
 	}
 	
+	/*
+	 *  (non-Javadoc)
+	 *  @see com.runva.api.models.service.IInscripcionService#update(com.runva.api.models.
+	 * 	entity.Event))
+	 */
+	@Override
+	public Inscription update(Inscription inscription) {
+
+		Inscription inscriptionExist = inscriptionDao.getInscriptionById(inscription.getId());
+
+		if (inscriptionExist.getId() == null) {
+			return null;
+		}
+
+		inscriptionDao.update(inscription, inscriptionExist);
+		return inscriptionDao.getInscriptionById(inscription.getId());
+	}
 
 }

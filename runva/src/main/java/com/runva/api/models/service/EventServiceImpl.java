@@ -80,15 +80,21 @@ public class EventServiceImpl implements IEventService {
 		return eventDao.getEventById(id);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.runva.api.models.service.IEventService#update(om.runva.api.models.
+	 * entity.Event)
+	 */
 	@Override
 	public Event update(Event event) {
-		
+
 		Event eventExist = eventDao.getEventById(event.getId());
-		
-		if(eventExist.getId() == null) {
+
+		if (eventExist.getId() == null) {
 			return null;
 		}
-		
+
 		eventDao.update(event, eventExist);
 		return eventDao.getEventById(event.getId());
 	}
