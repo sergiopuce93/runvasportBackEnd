@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.runva.api.models.entity.Inscription;
 
+
 /**
  * Implementation of inscriptionoDao interface
  * 
@@ -86,5 +87,16 @@ public class InscriptionDaoImpl implements IInscriptionDao {
 			inscription = null;
 		}
 		em.remove(getInscriptionById(id));
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.runva.api.models.dao.IInscriptionDao#update(com.runva.api.models.entity.Inscription, com.runva.api.models.entity.Inscription)
+	 */
+	@Override
+	public void update(Inscription newInscription, Inscription originalInscription) {
+		originalInscription.join(newInscription);
+		
+		em.merge(originalInscription);
 	}
 }

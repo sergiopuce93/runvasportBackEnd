@@ -43,4 +43,11 @@ public interface IInscriptionDao {
 	 * @param id
 	 */
 	void delete(Integer id);
+	
+	/**
+	 * Update inscription
+	 * 
+	 * @param inscription
+	 */
+	void update(Inscription newInscription, Inscription originalInscription);
 }

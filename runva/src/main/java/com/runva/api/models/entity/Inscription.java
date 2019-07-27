@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 /**
- * Event entity of runvasport's data base
+ * Inscription entity of runvasport's data base
  * 
  * @author Sergio
  *
@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 public class Inscription {
 
 	@Id
-	@Column(name = "IDLista")
+	@Column(name = "IDInscripcion")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
@@ -31,14 +31,22 @@ public class Inscription {
 	@Column(name = "Usuario")
 	private Integer idUsuario;
 
-	@NotNull(message = "El campo evento es obligatorio")
-	@Column(name = "Event")
+	@NotNull(message = "El campo inscriptiono es obligatorio")
+	@Column(name = "Evento")
 	private Integer idEvento;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Fecha")
 	private Date date;
 
+	public Inscription() {
+		// Empty constructor
+	}
+	
+	/*
+	 * Getters and setters 
+	 */
+	
 	public Integer getId() {
 		return id;
 	}
@@ -70,6 +78,17 @@ public class Inscription {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
 
+	/**
+	 * Merge not null values to inscription
+	 * 
+	 * @param newInscription
+	 */
+	public void join(Inscription newInscription) {
+
+		this.date = (newInscription.getDate() == null) ? this.date : newInscription.getDate();
+		this.idEvento = (newInscription.getIdEvento() == null) ? this.idEvento : newInscription.getIdEvento();
+		this.idUsuario = (newInscription.getIdUsuario() == null) ? this.idUsuario : newInscription.getIdUsuario();
+
+	}
 }

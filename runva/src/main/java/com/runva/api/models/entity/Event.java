@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -33,9 +31,9 @@ public class Event {
 	@Column(name = "Nombre")
 	private String name;
 
-	@Column(name = "Url")
+	@Column(name = "URL")
 	private String url;
-	
+
 	@Column(name = "Imagen")
 	private String imagen;
 
@@ -50,19 +48,19 @@ public class Event {
 	@Column(name = "LimiteParticipantes")
 	private Integer limitedParticipants;
 
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name = "FechaInicio")
 	private Date dateIni;
 
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name = "FechaFin")
 	private Date dateEnd;
 
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name = "FechaInicioInscrip")
 	private Date dateIniInscription;
 
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name = "FechaFinInscrip")
 	private Date dateEndInscription;
 
@@ -74,6 +72,9 @@ public class Event {
 
 	@Column(name = "Pais")
 	private String country;
+
+	@Column(name = "Provincia")
+	private String provincia;
 
 	@Column(name = "Poblacion")
 	private String population;
@@ -87,6 +88,9 @@ public class Event {
 	@Column(name = "EstiloVisual")
 	private String visualStyle;
 
+	@Column(name = "Clasificacion")
+	private String clasification;
+
 	@Column(name = "LimiteInscritos")
 	private String limitedInscri;
 
@@ -97,7 +101,7 @@ public class Event {
 	/*
 	 * Getters and setters
 	 */
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -148,6 +152,22 @@ public class Event {
 
 	public Integer getLimitedParticipants() {
 		return limitedParticipants;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getClasification() {
+		return clasification;
+	}
+
+	public void setClasification(String clasification) {
+		this.clasification = clasification;
 	}
 
 	public void setLimitedParticipants(Integer limitedParticipants) {
@@ -249,25 +269,29 @@ public class Event {
 	public void setLimitedInscri(String limitedInscri) {
 		this.limitedInscri = limitedInscri;
 	}
-	
+
 	/**
 	 * Merge not null values to event
 	 * 
 	 * @param newEvent
 	 */
 	public void join(Event newEvent) {
-		
+
 		this.address = (newEvent.getAddress() == null) ? this.address : newEvent.getAddress();
 		this.country = (newEvent.getCountry() == null) ? this.country : newEvent.getCountry();
 		this.dateEnd = (newEvent.getDateEnd() == null) ? this.dateEnd : newEvent.getDateEnd();
-		this.dateEndInscription = (newEvent.getDateEndInscription() == null) ? this.dateEndInscription : newEvent.getDateEndInscription();
+		this.dateEndInscription = (newEvent.getDateEndInscription() == null) ? this.dateEndInscription
+				: newEvent.getDateEndInscription();
 		this.dateIni = (newEvent.getDateIni() == null) ? this.dateIni : newEvent.getDateIni();
-		this.dateIniInscription = (newEvent.getDateIniInscription() == null) ? this.dateIniInscription : newEvent.getDateIniInscription();
+		this.dateIniInscription = (newEvent.getDateIniInscription() == null) ? this.dateIniInscription
+				: newEvent.getDateIniInscription();
 		this.email = (newEvent.getEmail() == null) ? this.email : newEvent.getEmail();
-		this.estimatedParticipants = (newEvent.getEstimatedParticipants() == null) ? this.estimatedParticipants : newEvent.getEstimatedParticipants();
+		this.estimatedParticipants = (newEvent.getEstimatedParticipants() == null) ? this.estimatedParticipants
+				: newEvent.getEstimatedParticipants();
 		this.imagen = (newEvent.getImagen() == null) ? this.imagen : newEvent.getImagen();
 		this.limitedInscri = (newEvent.getLimitedInscri() == null) ? this.limitedInscri : newEvent.getLimitedInscri();
-		this.limitedParticipants = (newEvent.getLimitedParticipants() == null) ? this.limitedParticipants : newEvent.getLimitedParticipants();
+		this.limitedParticipants = (newEvent.getLimitedParticipants() == null) ? this.limitedParticipants
+				: newEvent.getLimitedParticipants();
 		this.name = (newEvent.getName() == null) ? this.name : newEvent.getName();
 		this.place = (newEvent.getPlace() == null) ? this.place : newEvent.getPlace();
 		this.population = (newEvent.getPopulation() == null) ? this.population : newEvent.getPopulation();
@@ -275,7 +299,7 @@ public class Event {
 		this.sport = (newEvent.getSport() == null) ? this.sport : newEvent.getSport();
 		this.url = (newEvent.getUrl() == null) ? this.url : newEvent.getUrl();
 		this.visualStyle = (newEvent.getVisualStyle() == null) ? this.visualStyle : newEvent.getVisualStyle();
-		
+
 	}
 
 }
