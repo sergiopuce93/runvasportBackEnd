@@ -296,6 +296,7 @@ public class Event {
 		this.postalCode = (newEvent.getPostalCode() == null) ? this.postalCode : newEvent.getPostalCode();
 		this.sport = (newEvent.getSport() == null) ? this.sport : newEvent.getSport();
 		this.url = (newEvent.getUrl() == null) ? this.url : newEvent.getUrl();
+		this.provincia = (newEvent.getProvincia() == null) ? this.provincia : newEvent.getProvincia();
 
 	}
 

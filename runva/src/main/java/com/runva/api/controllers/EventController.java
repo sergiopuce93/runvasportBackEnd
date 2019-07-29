@@ -50,6 +50,7 @@ public class EventController {
 	private static final String EVENTDELETE = "EVENT DELETE";
 	private static final String EVENTCREATE = "EVENT CREATED";
 	private static final String EVENTNOTVALID = "EVENT FORMAT NOT VALID";
+	private static final String EVENTUPDATED = "EVENT UPDATED";
 
 	/**
 	 * Get all events
@@ -164,8 +165,11 @@ public class EventController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		Event updatedEvent = eventService.update(event);
-
-		return ResponseEntity.ok().body(updatedEvent);
+		response.put("message", EVENTUPDATED);
+		response.put("eventUpdated",updatedEvent);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+		
+		
 	}
 
 	/**
