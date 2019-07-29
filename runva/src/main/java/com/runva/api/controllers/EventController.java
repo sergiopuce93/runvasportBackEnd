@@ -165,11 +165,11 @@ public class EventController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		Event updatedEvent = eventService.update(event);
+		
 		response.put("message", EVENTUPDATED);
 		response.put("eventUpdated",updatedEvent);
+		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
-		
-		
 	}
 
 	/**
