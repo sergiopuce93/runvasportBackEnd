@@ -18,80 +18,75 @@ import javax.validation.constraints.Size;
  *
  */
 @Entity
-@Table(name = "eventos")
+@Table(name = "eventos", schema = "targetSchemaName")
 public class Event {
 
 	@Id
-	@Column(name = "IDEvento")
+	@Column(name = "id_evento")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotNull(message = "obligatory")
 	@Size(min = 2, message = "must have a minimum of 2 characters")
-	@Column(name = "Nombre")
+	@Column(name = "nombre")
 	private String name;
 
-	@Column(name = "URL")
+	@Column(name = "url")
 	private String url;
 
-	@Column(name = "Imagen")
+	@Column(name = "imagen")
 	private String imagen;
 
-	@NotNull(message = "obligatory")
-	@Size(min = 4, max = 12, message = "must have between 4 and 12 characters")
-	@Column(name = "DeportePrincipal")
+	@Column(name = "deporte_principal")
 	private String sport;
 
-	@Column(name = "ParticipantesEstimados")
+	@Column(name = "participantes_estimado")
 	private Integer estimatedParticipants;
 
-	@Column(name = "LimiteParticipantes")
+	@Column(name = "limite_participantes")
 	private Integer limitedParticipants;
 
 	
-	@Column(name = "FechaInicio")
+	@Column(name = "fecha_inicio")
 	private Date dateIni;
 
 	
-	@Column(name = "FechaFin")
+	@Column(name = "fecha_fin")
 	private Date dateEnd;
 
 	
-	@Column(name = "FechaInicioInscrip")
+	@Column(name = "fecha_inicio_inscrip")
 	private Date dateIniInscription;
 
 	
-	@Column(name = "FechaFinInscrip")
+	@Column(name = "fecha_fin_inscrip")
 	private Date dateEndInscription;
 
-	@Column(name = "Lugar")
+	@Column(name = "lugar")
 	private String place;
 
-	@Column(name = "Direccion")
+	@Column(name = "direccion")
 	private String address;
 
-	@Column(name = "Pais")
+	@Column(name = "pais")
 	private String country;
 
-	@Column(name = "Provincia")
+	@Column(name = "provincia")
 	private String provincia;
 
-	@Column(name = "Poblacion")
+	@Column(name = "poblacion")
 	private String population;
 
-	@Column(name = "CP")
+	@Column(name = "cp")
 	private Integer postalCode;
 
-	@Column(name = "EMail")
+	@Column(name = "email")
 	private String email;
 
-	@Column(name = "EstiloVisual")
-	private String visualStyle;
-
-	@Column(name = "Clasificacion")
+	@Column(name = "clasificacion")
 	private String clasification;
 
-	@Column(name = "LimiteInscritos")
+	@Column(name = "limite_inscritos")
 	private String limitedInscri;
 
 	public Event() {
@@ -254,14 +249,6 @@ public class Event {
 		this.email = email;
 	}
 
-	public String getVisualStyle() {
-		return visualStyle;
-	}
-
-	public void setVisualStyle(String visualStyle) {
-		this.visualStyle = visualStyle;
-	}
-
 	public String getLimitedInscri() {
 		return limitedInscri;
 	}
@@ -298,7 +285,6 @@ public class Event {
 		this.postalCode = (newEvent.getPostalCode() == null) ? this.postalCode : newEvent.getPostalCode();
 		this.sport = (newEvent.getSport() == null) ? this.sport : newEvent.getSport();
 		this.url = (newEvent.getUrl() == null) ? this.url : newEvent.getUrl();
-		this.visualStyle = (newEvent.getVisualStyle() == null) ? this.visualStyle : newEvent.getVisualStyle();
 
 	}
 
