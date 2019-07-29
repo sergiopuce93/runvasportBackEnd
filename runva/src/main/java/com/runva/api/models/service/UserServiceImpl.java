@@ -12,8 +12,6 @@ import com.runva.api.models.entity.User;
 /**
  * Implementation of Service for userDao
  * 
- * @author Sergio
- *
  */
 @Service
 @Transactional

@@ -12,7 +12,6 @@ import com.runva.api.models.entity.Event;
 /**
  * Implementation of Service for eventDao
  * 
- * @author Sergio
  *
  */
 @Service

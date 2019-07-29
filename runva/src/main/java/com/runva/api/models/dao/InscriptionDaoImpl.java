@@ -16,7 +16,6 @@ import com.runva.api.models.entity.Inscription;
  * 
  * Manage session and queries executions for runvasport data base
  * 
- * @author Sergio
  *
  */
 @Repository

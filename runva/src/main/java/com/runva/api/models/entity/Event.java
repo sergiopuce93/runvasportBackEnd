@@ -8,14 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  * Event entity of runvasport's data base
  * 
- * @author Sergio
- *
  */
 @Entity
 @Table(name = "eventos", schema = "targetSchemaName")
@@ -34,52 +34,63 @@ public class Event {
 	@Column(name = "url")
 	private String url;
 
+	@NotNull(message = "obligatory")
 	@Column(name = "imagen")
 	private String imagen;
 
+	@NotNull(message = "obligatory")
 	@Column(name = "deporte_principal")
 	private String sport;
 
+	@NotNull(message = "obligatory")
 	@Column(name = "participantes_estimado")
 	private Integer estimatedParticipants;
 
 	@Column(name = "limite_participantes")
 	private Integer limitedParticipants;
 
-	
+	@Temporal(TemporalType.DATE)
+	@NotNull(message = "obligatory")
 	@Column(name = "fecha_inicio")
 	private Date dateIni;
 
-	
+	@Temporal(TemporalType.DATE)
+	@NotNull(message = "obligatory")
 	@Column(name = "fecha_fin")
 	private Date dateEnd;
 
-	
+	@Temporal(TemporalType.DATE)
+	@NotNull(message = "obligatory")
 	@Column(name = "fecha_inicio_inscrip")
 	private Date dateIniInscription;
 
-	
+	@Temporal(TemporalType.DATE)
+	@NotNull(message = "obligatory")
 	@Column(name = "fecha_fin_inscrip")
 	private Date dateEndInscription;
 
+	@NotNull(message = "obligatory")
 	@Column(name = "lugar")
 	private String place;
 
 	@Column(name = "direccion")
 	private String address;
 
+	@NotNull(message = "obligatory")
 	@Column(name = "pais")
 	private String country;
 
+	@NotNull(message = "obligatory")
 	@Column(name = "provincia")
 	private String provincia;
-
+	
 	@Column(name = "poblacion")
 	private String population;
 
 	@Column(name = "cp")
 	private Integer postalCode;
 
+	@NotNull(message = "obligatory")
 	@Column(name = "email")
 	private String email;
 

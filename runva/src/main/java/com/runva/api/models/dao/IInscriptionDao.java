@@ -9,7 +9,6 @@ import com.runva.api.models.entity.Inscription;
  * 
  * Manage all connections to runvasport data base about inscriptions
  * 
- * @author Sergio
  *
  */
 public interface IInscriptionDao {

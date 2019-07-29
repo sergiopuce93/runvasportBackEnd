@@ -29,8 +29,7 @@ import com.runva.api.models.service.IEventService;
  * Controller class Event class
  * 
  * HTTP mappings
- * 
- * @authoR SERGIO
+ *
  */
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController

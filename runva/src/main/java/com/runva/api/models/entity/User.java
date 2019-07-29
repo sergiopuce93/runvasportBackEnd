@@ -9,8 +9,6 @@ import javax.persistence.Table;
 
 /**
  * User entity of runvasport's data base
- * 
- * @author Sergio
  *
  */
 @Entity

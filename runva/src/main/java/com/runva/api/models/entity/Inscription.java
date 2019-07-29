@@ -17,8 +17,6 @@ import javax.persistence.ForeignKey;
 
 /**
  * Inscription entity of runvasport's data base
- * 
- * @author Sergio
  *
  */
 @Entity
