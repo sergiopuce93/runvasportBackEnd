@@ -51,6 +51,7 @@ public class UserController {
 	private static final String USERDELETE = "USER DELETE";
 	private static final String USERCREATE = "USER CREATED";
 	private static final String USERNOTVALID = "USER FORMAT NOT VALID";
+	private static final String USERUPDATED = "USER UPDATED";
 
 	/**
 	 * Get all users
@@ -111,8 +112,8 @@ public class UserController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		response.put("error", USERCREATE);
-		response.put("usero", useroNew);
+		response.put("message", USERCREATE);
+		response.put("user", useroNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
@@ -140,7 +141,7 @@ public class UserController {
 		}
 
 		userService.delete(idUser);
-		response.put("error", USERDELETE);
+		response.put("message", USERDELETE);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
@@ -165,8 +166,9 @@ public class UserController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		User updatedUser = userService.update(user);
-
-		return ResponseEntity.ok().body(updatedUser);
+		response.put("message", USERUPDATED);
+		response.put("UserUpdated", updatedUser);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
 	/**
