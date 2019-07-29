@@ -23,20 +23,20 @@ import javax.validation.constraints.NotNull;
 public class Inscription {
 
 	@Id
-	@Column(name = "IDInscripcion")
+	@Column(name = "id_inscripcion")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotNull(message = "El campo usuario es obligatorio")
-	@Column(name = "Usuario")
+	@Column(name = "usuario")
 	private Integer idUsuario;
 
 	@NotNull(message = "El campo inscriptiono es obligatorio")
-	@Column(name = "Evento")
+	@Column(name = "evento")
 	private Integer idEvento;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "Fecha")
+	@Column(name = "fecha")
 	private Date date;
 
 	public Inscription() {

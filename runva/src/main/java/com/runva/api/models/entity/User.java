@@ -18,59 +18,59 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@Column(name = "IDUsuario")
+	@Column(name = "id_usuario")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "Usuario")
+	@Column(name = "usuario")
 	private String username;
 
-	@Column(name = "Nombre")
+	@Column(name = "nombre")
 	private String name;
 	
-	@Column(name = "Apellidos")
+	@Column(name = "apellidos")
 	private String surnames;
 	
-	@Column(name = "Pais")
+	@Column(name = "pais")
 	private String country;
 	
-	@Column(name = "Provincia")
+	@Column(name = "provincia")
 	private String provincia;
 	
-	@Column(name = "Poblacion")
+	@Column(name = "poblacion")
 	private String poblation;
 	
-	@Column(name = "CP")
+	@Column(name = "cp")
 	private Integer cp;
 	
-	@Column(name = "Direccion")
+	@Column(name = "direccion")
 	private String address;
 	
-	@Column(name = "PaginaWEB")
+	@Column(name = "pagina_web")
 	private String web;
 	
-	@Column(name = "Facebook")
+	@Column(name = "facebook")
 	private String facebook;
 	
-	@Column(name = "Twitter")
+	@Column(name = "twitter")
 	private String twitter;
 	
-	@Column(name = "Idioma")
+	@Column(name = "idioma")
 	private String language;
 	
-	@Column(name = "PersonaContacto")
+	@Column(name = "persona_contacto")
 	private Integer contactPerson;
 	
-	@Column(name = "TlfFijo")
+	@Column(name = "tlf_fijo")
 	private Integer telephone;
 	
-	@Column(name = "TlfMovil")
+	@Column(name = "tlf_movil")
 	private Integer movil;
 	
-	@Column(name = "Email")
+	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "Administrador")
+	@Column(name = "administrador")
 	private Integer admin;
 
 	public User() {
