@@ -7,10 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.persistence.ForeignKey;
 
 /**
  * Inscription entity of runvasport's data base
@@ -27,12 +30,15 @@ public class Inscription {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@ManyToOne(targetEntity = Inscription.class)
+	@JoinColumn(name = "usuario", foreignKey = @ForeignKey(name = "usuario"))
 	@NotNull(message = "El campo usuario es obligatorio")
-	@Column(name = "usuario")
 	private Integer idUsuario;
 
 	@NotNull(message = "El campo inscriptiono es obligatorio")
-	@Column(name = "evento")
+	@ManyToOne(targetEntity = Inscription.class)
+	@JoinColumn(name = "evento", foreignKey = @ForeignKey(name = "evento"))
+	@NotNull(message = "El campo evento es obligatorio")
 	private Integer idEvento;
 
 	@Temporal(TemporalType.DATE)
@@ -42,11 +48,11 @@ public class Inscription {
 	public Inscription() {
 		// Empty constructor
 	}
-	
+
 	/*
-	 * Getters and setters 
+	 * Getters and setters
 	 */
-	
+
 	public Integer getId() {
 		return id;
 	}
