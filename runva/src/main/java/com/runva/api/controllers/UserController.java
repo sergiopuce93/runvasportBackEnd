@@ -30,7 +30,6 @@ import com.runva.api.models.service.IUserService;
  * 
  * HTTP mappings
  * 
- * @authoR SERGIO
  */
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController

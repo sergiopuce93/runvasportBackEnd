@@ -15,7 +15,6 @@ import com.runva.api.models.entity.Event;
  * 
  * Manage session and queries executions for runvasport data base
  * 
- * @author Sergio
  *
  */
 @Repository

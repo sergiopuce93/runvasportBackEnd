@@ -8,7 +8,6 @@ import com.runva.api.models.entity.Inscription;
 /**
  * Service class for inscriptionoDao class
  * 
- * @author Sergio
  *
  */
 public interface IInscriptionService {

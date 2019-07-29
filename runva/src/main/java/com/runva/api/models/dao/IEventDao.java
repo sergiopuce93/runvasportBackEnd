@@ -9,7 +9,6 @@ import com.runva.api.models.entity.Event;
  * 
  * Manage all connections to runvasport data base about events
  * 
- * @author Sergio
  *
  */
 public interface IEventDao {

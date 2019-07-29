@@ -7,7 +7,6 @@ import com.runva.api.models.entity.User;
 /**
  * Service class for userDao class
  * 
- * @author Sergio
  *
  */
 public interface IUserService {

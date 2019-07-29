@@ -13,7 +13,6 @@ import com.runva.api.models.entity.Inscription;
 /**
  * Implementation of Service for inscriptionDao
  * 
- * @author Sergio
  *
  */
 @Service

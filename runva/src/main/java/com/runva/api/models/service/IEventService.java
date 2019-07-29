@@ -7,7 +7,6 @@ import com.runva.api.models.entity.Event;
 /**
  * Service class for eventoDao class
  * 
- * @author Sergio
  *
  */
 public interface IEventService {
