@@ -165,8 +165,10 @@ public class UserController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		User updatedUser = userService.update(user);
+		
 		response.put("message", USERUPDATED);
 		response.put("UserUpdated", updatedUser);
+		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
