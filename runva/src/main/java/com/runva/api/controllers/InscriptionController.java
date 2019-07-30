@@ -113,7 +113,7 @@ public class InscriptionController {
 		}
 
 		response.put("error", INSCRIPTIONCREATE);
-		response.put("inscriptiono", inscriptionoNew);
+		response.put("inscription", inscriptionoNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
@@ -141,7 +141,7 @@ public class InscriptionController {
 		}
 
 		inscriptionService.delete(idInscription);
-		response.put("error", INSCRIPTIONDELETE);
+		response.put("message", INSCRIPTIONDELETE);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
