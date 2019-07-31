@@ -50,7 +50,7 @@ public class InscriptionController {
 	private static final String INSCRIPTIONDELETE = "INSCRIPTION DELETE";
 	private static final String INSCRIPTIONCREATE = "INSCRIPTION CREATED";
 	private static final String INSCRIPTIONNOTVALID = "INSCRIPTION FORMAT NOT VALID";
-	private static final String INSCRIPTIONUPDATED = "INSCRIPTION FORMAT NOT VALID";
+	private static final String INSCRIPTIONUPDATED = "INSCRIPTION UPDATED";
 
 	/**
 	 * Get all inscriptions
