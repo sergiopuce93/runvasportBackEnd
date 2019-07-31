@@ -50,6 +50,7 @@ public class InscriptionController {
 	private static final String INSCRIPTIONDELETE = "INSCRIPTION DELETE";
 	private static final String INSCRIPTIONCREATE = "INSCRIPTION CREATED";
 	private static final String INSCRIPTIONNOTVALID = "INSCRIPTION FORMAT NOT VALID";
+	private static final String INSCRIPTIONUPDATED = "INSCRIPTION UPDATED";
 
 	/**
 	 * Get all inscriptions
@@ -112,7 +113,7 @@ public class InscriptionController {
 		}
 
 		response.put("error", INSCRIPTIONCREATE);
-		response.put("inscriptiono", inscriptionoNew);
+		response.put("inscription", inscriptionoNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
@@ -140,7 +141,7 @@ public class InscriptionController {
 		}
 
 		inscriptionService.delete(idInscription);
-		response.put("error", INSCRIPTIONDELETE);
+		response.put("message", INSCRIPTIONDELETE);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
@@ -167,7 +168,10 @@ public class InscriptionController {
 		}
 		Inscription updatedInscription = inscriptionService.update(inscription);
 
-		return ResponseEntity.ok().body(updatedInscription);
+		response.put("message", INSCRIPTIONUPDATED);
+		response.put("eventUpdated", updatedInscription);
+
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
 	/**
@@ -177,7 +181,7 @@ public class InscriptionController {
 	 * @return
 	 */
 	private boolean isValid(Inscription inscription) {
-		
+
 		if (inscription == null || inscription.getId() == null) {
 			return false;
 		}

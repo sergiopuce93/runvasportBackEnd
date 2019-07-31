@@ -30,15 +30,16 @@ public class Inscription {
 
 	@ManyToOne(targetEntity = Inscription.class)
 	@JoinColumn(name = "usuario", foreignKey = @ForeignKey(name = "usuario"))
-	@NotNull(message = "El campo usuario es obligatorio")
+	@NotNull(message = "obligatory")
 	private Integer idUsuario;
 
-	@NotNull(message = "El campo inscriptiono es obligatorio")
+	@NotNull(message = "obligatory")
 	@ManyToOne(targetEntity = Inscription.class)
 	@JoinColumn(name = "evento", foreignKey = @ForeignKey(name = "evento"))
 	@NotNull(message = "El campo evento es obligatorio")
 	private Integer idEvento;
 
+	@NotNull(message = "obligatory")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "fecha")
 	private Date date;
