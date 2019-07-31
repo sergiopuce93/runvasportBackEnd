@@ -33,7 +33,7 @@ public class Organizer {
 	@Column(name = "nombre")
 	private String name;
 
-	@Column(name = "despcripcion")
+	@Column(name = "descripcion")
 	private String description;
 
 	@Column(name = "enlace_interes")
