@@ -34,7 +34,6 @@ public class Event {
 	@Column(name = "url")
 	private String url;
 
-	@NotNull(message = "obligatory")
 	@Column(name = "imagen")
 	private String imagen;
 
@@ -90,7 +89,6 @@ public class Event {
 	@Column(name = "cp")
 	private Integer postalCode;
 
-	@NotNull(message = "obligatory")
 	@Column(name = "email")
 	private String email;
 

@@ -31,7 +31,7 @@ import com.runva.api.models.service.IEventService;
  * HTTP mappings
  *
  */
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/events")
 public class EventController {
@@ -111,7 +111,7 @@ public class EventController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		response.put("error", EVENTCREATE);
+		response.put("mensaje", EVENTCREATE);
 		response.put("evento", eventoNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
