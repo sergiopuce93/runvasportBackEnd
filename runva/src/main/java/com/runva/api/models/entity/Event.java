@@ -26,10 +26,10 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull(message = "obligatory")
-	@Size(min = 2, message = "must have a minimum of 2 characters")
+	@NotNull(message = "OBLIGATORIO")
+	@Size(min = 2, message = "DEBE TENER AL MENOS 2 CARACTERES")
 	@Column(name = "nombre")
-	private String name;
+	private String nombre;
 
 	@Column(name = "url")
 	private String url;
@@ -37,11 +37,11 @@ public class Event {
 	@Column(name = "imagen")
 	private String imagen;
 
-	@NotNull(message = "obligatory")
+	@NotNull(message = "OBLIGATORIO")
 	@Column(name = "deporte_principal")
 	private String sport;
 
-	@NotNull(message = "obligatory")
+	@NotNull(message = "OBLIGATORIO")
 	@Column(name = "participantes_estimado")
 	private Integer estimatedParticipants;
 
@@ -49,12 +49,12 @@ public class Event {
 	private Integer limitedParticipants;
 
 	@Temporal(TemporalType.DATE)
-	@NotNull(message = "obligatory")
+	@NotNull(message = "OBLIGATORIO")
 	@Column(name = "fecha_inicio")
 	private Date dateIni;
 
 	@Temporal(TemporalType.DATE)
-	@NotNull(message = "obligatory")
+	@NotNull(message = "OBLIGATORIO")
 	@Column(name = "fecha_fin")
 	private Date dateEnd;
 
@@ -68,18 +68,18 @@ public class Event {
 	@Column(name = "fecha_fin_inscrip")
 	private Date dateEndInscription;
 
-	@NotNull(message = "obligatory")
+	@NotNull(message = "OBLIGATORIO")
 	@Column(name = "lugar")
 	private String place;
 
 	@Column(name = "direccion")
 	private String address;
 
-	@NotNull(message = "obligatory")
+	@NotNull(message = "OBLIGATORIO")
 	@Column(name = "pais")
 	private String country;
 
-	@NotNull(message = "obligatory")
+	@NotNull(message = "OBLIGATORIO")
 	@Column(name = "provincia")
 	private String provincia;
 	
@@ -123,11 +123,11 @@ public class Event {
 	}
 
 	public String getName() {
-		return name;
+		return nombre;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.nombre = name;
 	}
 
 	public String getUrl() {
@@ -288,7 +288,7 @@ public class Event {
 		this.limitedInscri = (newEvent.getLimitedInscri() == null) ? this.limitedInscri : newEvent.getLimitedInscri();
 		this.limitedParticipants = (newEvent.getLimitedParticipants() == null) ? this.limitedParticipants
 				: newEvent.getLimitedParticipants();
-		this.name = (newEvent.getName() == null) ? this.name : newEvent.getName();
+		this.nombre = (newEvent.getName() == null) ? this.nombre : newEvent.getName();
 		this.place = (newEvent.getPlace() == null) ? this.place : newEvent.getPlace();
 		this.population = (newEvent.getPopulation() == null) ? this.population : newEvent.getPopulation();
 		this.postalCode = (newEvent.getPostalCode() == null) ? this.postalCode : newEvent.getPostalCode();
