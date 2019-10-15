@@ -97,7 +97,7 @@ public class EventController {
 		Map<String, Object> response = new HashMap<>();
 
 		if (result.hasErrors()) {
-			List<String> errors = result.getFieldErrors().stream().map(err -> "EL CAMPO "+ err.getField().toUpperCase() + " " + err.getDefaultMessage())
+			List<String> errors = result.getFieldErrors().stream().map(err -> err.getField().toUpperCase() + " " + err.getDefaultMessage())
 					.collect(Collectors.toList());
 
 			response.put("errors", errors);
@@ -153,7 +153,7 @@ public class EventController {
 		Map<String, Object> response = new HashMap<>();
 		
 		if (result.hasErrors()) {
-			List<String> errors = result.getFieldErrors().stream().map(err -> "EL CAMPO "+ err.getField().toUpperCase() + " " + err.getDefaultMessage())
+			List<String> errors = result.getFieldErrors().stream().map(err -> err.getField().toUpperCase() + " " + err.getDefaultMessage())
 					.collect(Collectors.toList());
 
 			response.put("errors", errors);
