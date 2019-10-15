@@ -45,12 +45,12 @@ public class EventController {
 	/*
 	 * Response default messages
 	 */
-	private static final String EVENTDOESNTEXIST = "EVENT DOESN'T EXIST";
+	private static final String EVENTDOESNTEXIST = "NO EXISTE EL EVENTO ";
 	private static final String BADREQUEST = "BAD REQUEST";
-	private static final String EVENTDELETE = "EVENT DELETE";
-	private static final String EVENTCREATE = "EVENT CREATED";
-	private static final String EVENTNOTVALID = "EVENT FORMAT NOT VALID";
-	private static final String EVENTUPDATED = "EVENT UPDATED";
+	private static final String EVENTDELETE = "EVENTO ELIMINADO";
+	private static final String EVENTCREATE = "EVENTO CREADO";
+	private static final String EVENTNOTVALID = "FORMATO NO VALIDO";
+	private static final String EVENTUPDATED = "EVENTO ACTUALIZADO";
 
 	/**
 	 * Get all events
@@ -97,7 +97,7 @@ public class EventController {
 		Map<String, Object> response = new HashMap<>();
 
 		if (result.hasErrors()) {
-			List<String> errors = result.getFieldErrors().stream().map(err -> "The field "+ err.getField() + " " + err.getDefaultMessage())
+			List<String> errors = result.getFieldErrors().stream().map(err -> "EL CAMPO "+ err.getField().toUpperCase() + " " + err.getDefaultMessage())
 					.collect(Collectors.toList());
 
 			response.put("errors", errors);
@@ -140,7 +140,7 @@ public class EventController {
 		}
 
 		eventService.delete(idEvent);
-		response.put("error", EVENTDELETE);
+		response.put("mensaje", EVENTDELETE);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
@@ -153,7 +153,7 @@ public class EventController {
 		Map<String, Object> response = new HashMap<>();
 		
 		if (result.hasErrors()) {
-			List<String> errors = result.getFieldErrors().stream().map(err -> "The field "+ err.getField() + " " + err.getDefaultMessage())
+			List<String> errors = result.getFieldErrors().stream().map(err -> "EL CAMPO "+ err.getField().toUpperCase() + " " + err.getDefaultMessage())
 					.collect(Collectors.toList());
 
 			response.put("errors", errors);
@@ -166,7 +166,7 @@ public class EventController {
 		}
 		Event updatedEvent = eventService.update(event);
 		
-		response.put("message", EVENTUPDATED);
+		response.put("mensaje", EVENTUPDATED);
 		response.put("eventUpdated",updatedEvent);
 		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
