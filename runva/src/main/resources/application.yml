@@ -1,0 +1,44 @@
+spring:
+    main:
+        banner-mode: console
+    application:
+        name: gto
+    resources:
+        static-locations: classpath:/static/
+    cache:
+        jcache:
+            config: classpath:ehcache.xml
+    jpa:
+        database: default
+        generate-ddl: false
+        hibernate:
+            ddl-auto: update
+            connection:
+                provider_class: org.hibernate.hikaricp.internal.HikariCPConnectionProvider
+        database-platform: POSTGRESQL
+        properties:
+            hibernate:
+                default_schema: public
+                show_sql: true
+                format_sql: false
+                use_sql: false
+                connection:
+                    release_mode: on_close
+                dialect: org.hibernate.dialect.PostgreSQL95Dialect
+                temp:
+                    use_jdbc_metadata_defaults: false
+                lob:
+                    non_contextual_creation: true
+        open-in-view: false
+    datasource:
+        url: ${DB_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:postgres}}
+        username: ${DB_USER:postgres}
+        password: ${DB_PASSWORD:admin}
+        # So app starts despite "table already exists" errors.
+        continue-on-error: true
+        hikari:
+            minimum-idle: 5
+            maximum-pool-size: 20
+            idle-timeout: 30000
+            pool-name: SpringBootJPAHikariCP
+            max-lifetime: 2000000
