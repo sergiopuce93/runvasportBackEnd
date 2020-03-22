@@ -1,5 +1,9 @@
 package com.backend.sport.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +24,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.backend.sport.models.Event;
 import com.backend.sport.services.IEventService;
@@ -87,13 +93,32 @@ public class EventController {
 		return new ResponseEntity<Event>(event, HttpStatus.OK);
 	}
 
+	@PostMapping("/fileUpload")
+	public ResponseEntity<?> postFile(@Valid @RequestParam("file") MultipartFile file)  {
+		Map<String, Object> response = new HashMap<>();
+		if(!file.isEmpty()) {
+			Path directoryResources = Paths.get("src//main//resources//static//uploads");
+			String rootPath = directoryResources.toFile().getAbsolutePath();
+			try {
+				byte[] bytes = file.getBytes();
+				Path route = Paths.get(rootPath + "//" + file.getOriginalFilename());
+				Files.write(route, bytes);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.print(e.getMessage());
+			}
+		}
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+	}
+	
 	/**
 	 * Add new event
 	 * 
 	 * @param new event
 	 */
 	@PostMapping("/")
-	public ResponseEntity<?> newEvent(@Valid @RequestBody Event event, BindingResult result) {
+	public ResponseEntity<?> newEvent(@Valid @RequestBody Event event,BindingResult result) {
 		Event eventoNew = null;
 		Map<String, Object> response = new HashMap<>();
 
@@ -104,6 +129,7 @@ public class EventController {
 			response.put("errors", errors);
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
+		
 
 		try {
 			eventoNew = eventService.newEvent(event);
